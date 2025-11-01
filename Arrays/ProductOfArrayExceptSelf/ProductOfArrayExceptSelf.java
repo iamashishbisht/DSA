@@ -1,4 +1,4 @@
-package Arrays.TwoSum;
+package Arrays.ProductOfArrayExceptSelf;
 
 import java.util.Arrays;
 
