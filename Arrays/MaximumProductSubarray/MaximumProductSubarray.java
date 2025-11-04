@@ -5,7 +5,7 @@ public class MaximumProductSubarray {
 
     public static void main(String[] args) {
 
-        int nums[] = new int[]{2,3,-2,4};
+        int nums[] = new int[]{2, 3, -2, 4};
         System.out.println("Max product is : " + maxProduct(nums));
 
         int nums0[] = new int[]{2, 3, -2, 4};
@@ -38,30 +38,27 @@ public class MaximumProductSubarray {
         return maxProduct;
     }
 
-    //incorrect one
-    //modified kadanes's algorith
-    /*public static int maxProduct(int[] nums) {
-        int maxProduct = nums[0];
-        int minProduct = nums[0];
-        int currentMaxProduct=1;
-        int currentMinProduct =1;
-        for (int i = 1; i <= nums.length - 1; i++) {
-            //int nums[] = new int[]{2,3,-2,4};
-            if(nums[i] == 0){
-                currentMaxProduct = 1;
-                currentMinProduct = 1;
-                continue;
-            }
-            //after multiplication the (currentMaxProduct, currentMinProduct) it max can be min, and min can be max
-            currentMaxProduct = maxProduct * nums[i];
-            currentMinProduct = minProduct * nums[i];
 
-            maxProduct = Math.max(Math.max(currentMaxProduct, currentMinProduct), nums[i]);
-            minProduct = Math.min(Math.min(currentMaxProduct, currentMinProduct), nums[i]);
-            //System.out.println("maxProd : "+maxProduct + " minProd : "+minProduct);
+    //modified Kadanes's algorithm
+    /*public static int maxProduct(int[] nums) {
+        int currentMaxProduct = nums[0];
+        int currentMinProduct = nums[0];
+        System.out.println("maxProd : "+currentMaxProduct + " minProd : "+currentMinProduct);
+        int globalMax = nums[0];
+        for (int i = 1; i <= nums.length - 1; i++) {
+            //after multiplication the (currentMaxProduct, currentMinProduct) it max can be min, and min can be max
+            currentMaxProduct = currentMaxProduct * nums[i];
+            //using it because currentMaxProduct gets changes in between
+            int tmpCurrMAx = currentMaxProduct;
+            currentMinProduct = currentMinProduct * nums[i];
+
+            currentMaxProduct = Math.max(Math.max(currentMaxProduct, currentMinProduct), nums[i]);
+            currentMinProduct = Math.min(Math.min(tmpCurrMAx, currentMinProduct), nums[i]);
+            System.out.println("maxProd : "+currentMaxProduct + " minProd : "+currentMinProduct);
+            globalMax = Math.max(currentMaxProduct, globalMax);
         }
 
-        return maxProduct;
+        return globalMax;
     }*/
 
     //brute force
